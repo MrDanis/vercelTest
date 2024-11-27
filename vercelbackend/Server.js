@@ -1,12 +1,12 @@
+const express = require('express');
 const app = express();
-const path = require("path");
-const loger = require("morgan");
 const cors = require("cors");
-app.use(loger("dev"));
+require('dotenv').config();
+const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(cors());
-app.use('/api',(req,res)=>{
-    res.send("test");
+app.use(cors('*'));
+app.use('/api/test',(req,res)=>{
+    res.send("hurra api is working");
 });
-app.listen(3000,(req,res)=>{console.log('Server is listening at port 3000')});
+app.listen(PORT,(req,res)=>{console.log('Server is listening at port 3000')});
